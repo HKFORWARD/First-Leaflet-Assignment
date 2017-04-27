@@ -1,0 +1,39 @@
+---
+title: "Map of Office and home"
+author: "Kun He"
+date: "27/4/2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+
+This is the graph of my home and office.
+
+
+```{r, echo=TRUE}
+library(leaflet)
+
+Icon_Office <- makeIcon(
+    iconUrl="http://ww1.hdnux.com/photos/50/53/74/10665740/3/920x920.jpg",
+    iconWidth=31*215/230, iconHeight=31,
+    iconAnchorX=31*215/230/2, iconAnchorY=16
+)
+
+Icon_Home <- makeIcon(
+    iconUrl="http://www.quotezone.co.uk/assets/images/showcase/product-home.png",
+    iconWidth=31*215/230, iconHeight=31,
+    iconAnchorX=31*215/230/2, iconAnchorY=16
+)
+
+HomeOffice <- leaflet() %>%
+    addTiles() %>%
+    addMarkers(lat=51.918918, lng=4.544613, popup="My Office", icon=Icon_Office) %>%
+    addMarkers(lat=51.927270, lng=4.582884, popup="My Home", icon=Icon_Home)
+
+HomeOffice
+
+```
